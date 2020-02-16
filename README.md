@@ -18,13 +18,14 @@ Lab used for learning Prometheus, Grafana and CentOS8 in the same time. IaC prov
         $ ansible --version
             ansible 2.9.4
 
-- *`govc` installed (optional) on the control workstation* 
+- *`govc` installed (optional) on the control workstation*
+- *a CentOS8 template image to clone from, prepared for Ansible configuration management*
 
 | **Hostname** | **IP** | **CPU** | **RAM** | **Storage** |
 | --- | --- | --- | --- | --- |
 | okila.hl.local | 192.168.7.95 | 2 | 4 GB | 50 GB  thin |
 
-CentOS8 is installed using UEFI boot and this is reflected in Terraform `main.tf` file as it needs `firmware` and `efi_secure_boot_enabled` parameters configured. The template used for cloning the VM is a minimal netinstall, which is already updated when the network installation is completed, but you have to install `Perl` on it otherwise the customization script on vSphere won't work. `Perl` isn't installed by default on a minimal install.
+CentOS8 is installed using UEFI boot and this is reflected in Terraform `main.tf` file as it needs `firmware` and `efi_secure_boot_enabled` parameters configured. The template used for cloning the VM is a minimal netinstall, which is already updated when the network installation is completed, but you have to install `Perl` on it otherwise the customization script on vSphere won't work. `Perl` isn't installed by default on a minimal install. Also the CentOS8 template is prepared to be configured by Ansible (it has a user with `sudo` rights and a key `ssh-copy-id`-ed as required).
 
 All the variables are exposed in `terraform.tfvars` file except the `username` and `password` needed to access the vSphere infrastructure. These two variables are exported as environment variables from the file `vsphere.env` excluded in `.gitignore` for security reasons. Replace them with your own credentials.
 

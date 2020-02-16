@@ -39,7 +39,7 @@ data "vsphere_virtual_machine" "template" {
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
-// Get info for the resource pool in which will be created the VM.
+// Get info for the resource pool in which the VM will be created.
 data "vsphere_resource_pool" "pool" {
   name          = var.res_pool_name
   datacenter_id = data.vsphere_datacenter.dc.id
@@ -105,6 +105,7 @@ resource "vsphere_virtual_machine" "vm" {
 
       ipv4_gateway = var.vm_ipv4_gateway
       # this will to allow to specify multiple values for dns servers
+      # and search domains list
       dns_server_list = var.vm_dns_servers
       dns_suffix_list = var.vm_dns_search_domain
     }
