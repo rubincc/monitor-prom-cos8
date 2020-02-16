@@ -1,5 +1,10 @@
 *.retry
+
+# This file contains the credentials to access the
+# vSphere infrastructure. It must be sourced before
+# Terraform operations.
 vsphere.env
+
 *.plan
 .terraform/
 *.tfstate
