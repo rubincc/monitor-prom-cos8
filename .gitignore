@@ -1,0 +1,7 @@
+*.retry
+vsphere.env
+*.plan
+.terraform/
+*.tfstate
+*.tfstate.backup
+.DS_Store
